@@ -448,10 +448,11 @@
     }
 
     /* STATS */
-    .hero-stats {
-      display: flex;
-      gap: 2.5rem;
-      margin-top: 2rem;
+    .hero-stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:2rem;
+      margin-top:2rem;
     }
 
     .hero-stat-item h3 {
@@ -524,9 +525,10 @@
         gap:3rem;
         text-align:center;
       }
-
+      
       .hero-stats{
-        justify-content:center;
+        grid-template-columns:repeat(3,1fr);
+        text-align:center;
       }
 
     }
