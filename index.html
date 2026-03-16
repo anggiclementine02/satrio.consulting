@@ -288,15 +288,15 @@
       transition: all 0.3s ease;
     }
 
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px); /* sesuaikan jika perlu */
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px); /* sesuaikan jika perlu */
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
 
     /* mobile nav (code2 structure & behavior) */
     .mobile-nav {
@@ -386,7 +386,7 @@
 
     /* ----- hero (code2 proportions + code1 visual elegance) ----- */
     .hero {
-      min-height: 130vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       position: relative;
@@ -588,103 +588,103 @@
     justify-content: center;
   }
 
-.hero-card-stack {
-  position: relative;
-  width: 100%;
-  max-width: 520px;
-  height: auto;
-  background: transparent;
-  border-radius: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  box-shadow: none;
-}
+  .hero-card-stack {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: none;
+  }
 
-/* GAMBAR UTAMA */
-.hero-main-image {
-  width: 100%;
-  height: 350px;
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 20px 60px rgba(49,55,128,0.15);
-}
+  /* GAMBAR UTAMA */
+  .hero-main-image {
+    width: 100%;
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(49,55,128,0.15);
+  }
 
-.hero-main-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  .hero-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-/* 3 CARD HORIZONTAL DI BAWAH */
-.hero-stats-row {
-  display: flex;
-  gap: 0.8rem;
-  width: 100%;
-}
+  /* 3 CARD HORIZONTAL DI BAWAH */
+  .hero-stats-row {
+    display: flex;
+    gap: 0.8rem;
+    width: 100%;
+  }
 
-.stat-card {
-  position: relative;
-  background: #fff;
-  border-radius: 16px;
-  padding: 1.2rem;
-  border: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.6rem;
-  flex: 1;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(49,55,128,0.06);
-}
+  .stat-card {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.2rem;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+    flex: 1;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(49,55,128,0.06);
+  }
 
-.stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(49,55,128,0.12);
-  border-color: rgba(49,55,128,0.2);
-}
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(49,55,128,0.12);
+    border-color: rgba(49,55,128,0.2);
+  }
 
-.stat-icon {
-  width: 40px;
-  height: 40px;
-  background: var(--accent-light);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  transition: all 0.3s;
-}
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    transition: all 0.3s;
+  }
 
-.stat-card:hover .stat-icon {
-  background: var(--accent);
-  color: #fff;
-}
+  .stat-card:hover .stat-icon {
+    background: var(--accent);
+    color: #fff;
+  }
 
-.stat-icon svg {
-  width: 20px;
-  height: 20px;
-  stroke-width: 1.5;
-}
+  .stat-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.5;
+  }
 
-.stat-number {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--black);
-  line-height: 1.3;
-}
+  .stat-number {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.3;
+  }
 
-.stat-label {
-  font-size: 1rem;
-  color: var(--gray-mid);
-  font-weight: 400;
-  line-height: 1.4;
-  display: none; /* sembunyikan label panjang, cukup title */
-}
+  .stat-label {
+    font-size: 1rem;
+    color: var(--gray-mid);
+    font-weight: 400;
+    line-height: 1.4;
+    display: none; /* sembunyikan label panjang, cukup title */
+  }
 
     /* ----- reveal animations (code1) ----- */
     .reveal {
@@ -853,16 +853,15 @@
 
 
     /* GLOBAL CAREER EXPO SECTION */
-
     .career-expo{
-      padding:110px 0;
+      padding:6rem 5%;
       background: var(--gradient-main);
       color:#fff;
       position:relative;
       overflow:hidden;
     }
 
-    /* subtle grid pattern biar premium */
+    /* subtle grid pattern */
     .career-expo::before{
       content:'';
       position:absolute;
@@ -874,15 +873,17 @@
       pointer-events:none;
     }
 
+    /* grid layout */
     .expo-grid{
       display:grid;
       grid-template-columns:1.1fr 1fr;
-      gap:80px;
+      gap:3rem;
       align-items:center;
       position:relative;
       z-index:2;
     }
 
+    /* text area */
     .expo-text{
       max-width:520px;
     }
@@ -908,14 +909,14 @@
       color:rgba(255,255,255,0.8);
     }
 
+    /* buttons */
     .expo-buttons{
-      margin-top:32px;
+      margin-top:2rem;
       display:flex;
       gap:14px;
       flex-wrap:wrap;
     }
 
-    /* tombol putih agar kontras */
     .expo-buttons .btn-primary{
       background:#fff;
       color:var(--accent);
@@ -931,10 +932,47 @@
     /* image */
     .expo-image img{
       width:100%;
-      border-radius:14px;
+      border-radius:16px;
       display:block;
       box-shadow:0 30px 70px rgba(0,0,0,0.25);
     }
+
+    /* =========================
+       RESPONSIVE
+       ========================= */
+
+    /* tablet */
+    @media (max-width:1024px){
+
+      .expo-grid{
+        grid-template-columns:1fr;
+        gap:2.5rem;
+        text-align:center;
+      }
+
+      .expo-text{
+        margin:auto;
+      }
+
+      .expo-buttons{
+        justify-content:center;
+      }
+
+    }
+
+    /* mobile */
+    @media (max-width:640px){
+
+      .career-expo{
+        padding:5rem 5%;
+      }
+
+      .expo-image img{
+        border-radius:12px;
+      }
+
+    }
+
     /* strengths grid (code1 card design) */
     .strengths-grid {
       display: grid;
