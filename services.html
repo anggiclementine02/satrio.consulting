@@ -448,6 +448,40 @@
       margin-right: auto;
     }
 
+    /* Tambahkan CSS untuk tombol hero */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: white;
+  color: var(--accent);
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(49,55,128,0.1);
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(49,55,128,0.15);
+  background: var(--accent);
+  color: white;
+}
+
+/* Untuk memastikan scrolling halus */
+html {
+  scroll-behavior: smooth;
+}
+
     /* service detail (preserving original layout but styled with new system) */
     .service-detail {
       padding: 6rem 5%;
@@ -880,14 +914,20 @@
   </div>
 
   <!-- PAGE HERO (styled like about.html) -->
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <div class="breadcrumb"><a href="index.html">Home</a> / Services</div>
-      <h1>Connecting Businesses<br>with <em>Exceptional Talent</em></h1>
-      <p>From executive search to scalable hiring solutions, Satrio Consulting supports companies in building high-performing teams with highly skilled and multilingual professionals across global markets.</p>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Services</div>
+    <h1>Connecting Businesses<br>with <em>Exceptional Talent</em></h1>
+    <p>From executive search to scalable hiring solutions, Satrio Consulting supports companies in building high-performing teams with highly skilled and multilingual professionals across global markets.</p>
+    
+    <!-- Tambahkan tombol-tombol layanan -->
+    <div class="hero-buttons">
+      <a href="#search" class="hero-btn">Executive & Talent Search</a>
+      <a href="#rpo" class="hero-btn">Recruitment Process Outsourcing </a>
+      <a href="#eor" class="hero-btn">Employer of Record</a>
     </div>
   </div>
-
+</div>
   <!-- SERVICE 1: Executive & Talent Search -->
   <div class="service-detail" id="search">
     <div class="service-detail-inner">
