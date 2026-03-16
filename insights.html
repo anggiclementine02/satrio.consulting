@@ -385,17 +385,17 @@
       transform: scaleX(1);
     }
 
-  .breadcrumb { 
-    font-size: 1rem; 
-    color: var(--gray-mid); 
-    margin-bottom: 1.2rem; 
+    .breadcrumb { 
+      font-size: 1rem; 
+      color: var(--gray-mid); 
+      margin-bottom: 1.2rem; 
+      }
+    .breadcrumb a { 
+      color: var(--accent); 
+      text-decoration: none; 
     }
-  .breadcrumb a { 
-    color: var(--accent); 
-    text-decoration: none; 
-  }
 
-    /* page hero (matching about.html hero aesthetics) */
+    /* page hero */
     .page-hero {
       min-height: 100vh;
       display: flex;
@@ -404,31 +404,20 @@
       overflow: hidden;
       background: var(--gradient-hero);
       padding-top: var(--header-height);
-      padding-bottom: 4rem;
     }
     .page-hero-inner {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 5%;
-      text-align: center;
-    }
-    .hero-tag {
-      display: inline-flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
       align-items: center;
-      gap: 0.5rem;
-      background: white;
-      color: var(--accent);
-      padding: 0.5rem 1.2rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 16px rgba(49,55,128,0.1);
     }
-    .page-hero h1 {
+
+    /* left */
+    .hero-left .breadcrumb { margin-bottom: 1.2rem; }
+    .hero-left h1 {
       font-family: var(--font-heading);
       font-size: clamp(2.8rem, 5vw, 4.2rem);
       font-weight: 600;
@@ -436,92 +425,70 @@
       color: var(--black);
       margin-bottom: 1.5rem;
     }
-    .page-hero h1 em { font-style: italic; color: var(--accent); }
-    .page-hero p {
+    .hero-left h1 em { font-style: italic; color: var(--accent); }
+    .hero-left p {
       font-size: 1.1rem;
       color: var(--gray-mid);
       line-height: 1.8;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    /* featured article */
-    .featured-article {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
+    /* right — featured card */
+    .hero-featured {
+      background: #fff;
+      border: 1px solid var(--border);
       border-radius: 24px;
-      overflow: hidden;
-      margin-bottom: 4rem;
-    }
-    .featured-img {
-      background: var(--gradient-main);
-      padding: 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      position: relative;
-      min-height: 380px;
-    }
-    .featured-img::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.3;
-    }
-    .featured-tag {
-      position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      background: rgba(255,255,255,0.2);
-      color: #fff;
-      padding: 0.3rem 0.8rem;
-      border-radius: 50px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      backdrop-filter: blur(4px);
-    }
-    .featured-img-title {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      font-weight: 300;
-      color: #fff;
-      line-height: 1.3;
-      position: relative;
-      z-index: 1;
-    }
-    .featured-content {
       padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 380px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    .art-meta {
-      font-size: 0.8rem;
-      color: var(--gray-mid);
-      margin-bottom: 1rem;
-      display: flex;
-      gap: 1rem;
+    .hero-featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient-main);
+      transform: scaleX(1);
     }
-    .featured-content h2 {
+    .featured-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 0.3rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      align-self: flex-start;
+    }
+    .hero-featured h3 {
       font-family: var(--font-heading);
-      font-size: 1.8rem;
-      font-weight: 300;
-      margin-bottom: 1rem;
+      font-size: 1.75rem;
+      font-weight: 400;
       line-height: 1.3;
+      color: var(--black);
+      margin-bottom: 1rem;
     }
-    .featured-content p {
+    .hero-featured p {
       font-size: 0.95rem;
       color: var(--gray-mid);
-      line-height: 1.75;
+      line-height: 1.8;
       margin-bottom: 1.5rem;
     }
-    .read-link {
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+      margin-bottom: 1.5rem;
+    }
+    .hero-featured .read-link {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -531,14 +498,38 @@
       text-decoration: none;
       transition: gap 0.2s;
     }
-    .read-link:hover { gap: 0.9rem; }
-    .read-link svg { width: 16px; height: 16px; stroke: currentColor; }
+    .hero-featured .read-link:hover { gap: 0.9rem; }
+    .hero-featured .read-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    /* responsive */
+    @media (max-width: 1024px) {
+      .page-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+    @media (max-width: 560px) {
+      .hero-left h1 { font-size: 2.4rem; }
+    }
+
+    .hero-btn {
+      margin-top: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
     /* articles grid */
     .articles-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
+      margin-top: 3rem;
     }
     .article-card {
       border-radius: 20px;
@@ -588,6 +579,18 @@
       line-height: 1.65;
       margin-bottom: 1rem;
     }
+    .read-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .read-link:hover { gap: 0.9rem; }
+    .read-link svg { width: 16px; height: 16px; stroke: currentColor; }
 
     /* topics section (light gray) */
     .topics-section { background: var(--gray-light); }
@@ -790,9 +793,9 @@
 
     /* responsive (from about.html) */
     @media (max-width: 1024px) {
+      .page-hero-inner { grid-template-columns: 1fr; gap: 3rem; }
       .desktop-nav { display: none; }
       .hamburger { display: flex; }
-      .featured-article { grid-template-columns: 1fr; }
       .articles-grid { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 768px) {
@@ -802,7 +805,7 @@
     }
     @media (max-width: 560px) {
       .footer-grid { grid-template-columns: 1fr; }
-      .page-hero h1 { font-size: 2.4rem; }
+      .hero-left h1 { font-size: 2.4rem; }
     }
   </style>
 </head>
@@ -825,8 +828,8 @@
       <div class="dropdown">
         <span class="nav-item">Initiatives <span style="font-size:0.7em; margin-left:2px;">▼</span></span>
         <div class="dropdown-menu">
-          <a href="#"><span class="dm-icon">⚡</span> Hirai.io</a>
-          <a href="#"><span class="dm-icon">🇯🇵</span> OKOSHI Japanese Edu</a>
+           <a href="services.html#okoshi"><span class="dm-icon">🇯🇵</span> OKOSHI Japanese Edu</a>
+           <a href="services.html#hirai"><span class="dm-icon">⚡</span> Hirai.io</a>
         </div>
       </div>
       <a href="about.html" class="nav-item">About Us</a>
@@ -853,8 +856,8 @@
     <div class="nav-item dropdown-trigger">
       Initiatives <span class="nav-arrow">▼</span>
       <div class="mobile-dropdown-content">
-        <a href="#">Hirai.io</a>
-        <a href="#">OKOSHI Japanese Edu</a>
+        <a href="services.html#okoshi">OKOSHI Japanese Edu</a>
+        <a href="services.html#hirai">Hirai.io</a>
       </div>
     </div>
     <a href="about.html" class="nav-item">About Us</a>
@@ -865,33 +868,50 @@
     </div>
   </div>
 
-  <!-- PAGE HERO (styled like about.html) -->
+  <!-- PAGE HERO – two columns, featured on right (like about) -->
   <div class="page-hero">
-    <div class="page-hero-inner">
-       <div class="breadcrumb"><a href="index.html">Home</a> / Insights</div>
-      <h1><em>Insights</em> & Perspectives<br>on Talent</h1>
-      <p>Market intelligence, hiring trends, career strategies, and thought leadership from the Satrio Consulting team — curated for business leaders and talent professionals.</p>
-    </div>
-  </div>
+  <div class="page-hero-inner">
 
-  <section>
-    <div class="section-inner">
-      <!-- FEATURED -->
-      <p class="section-label reveal">Featured</p>
-      <div class="featured-article reveal reveal-delay-1">
-        <div class="featured-img">
-          <div class="featured-tag">🔍 Executive Search</div>
-          <div class="featured-img-title">The 2025 Executive<br>Talent Landscape<br>in Southeast Asia</div>
-        </div>
-        <div class="featured-content">
-          <div class="art-meta"><span>📅 December 2024</span><span>⏱ 8 min read</span></div>
-          <h2>What C-Suite Hiring Tells Us About Asia's Growth Ambitions</h2>
-          <p>Demand for senior leaders with both regional fluency and global strategic thinking has surged across Indonesia, Malaysia, and Singapore. We analyse the key drivers, the talent gaps, and what boards should prioritise when building executive teams for 2025.</p>
-          <a href="#" class="read-link">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-        </div>
+   <!-- left column -->
+<div class="hero-left reveal">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Insights</div>
+
+  <h1>Perspectives on Talent, Hiring, <br> &  <em> Workforce Strategy</em></h1>
+
+  <p>
+  Market intelligence, hiring trends, career strategies, and thought leadership from the Satrio Consulting team, curated for business leaders and talent professionals.
+  </p>
+<a href="#articles" class="btn btn-primary hero-btn">
+  Explore All Articles
+</a>
+</div>
+
+    <!-- right column: featured article -->
+    <div class="hero-featured reveal reveal-delay-1">
+      <span class="featured-tag">Featured · Executive Search</span>
+      <h3>The 2025 Executive Talent Landscape in Southeast Asia</h3>
+      <p>Demand for senior leaders with both regional fluency and global strategic thinking has surged across APAC. We break down the key forces reshaping leadership hiring — and what boards and CHROs need to act on now.</p>
+      <div class="featured-meta">
+        <span>Primawan Satrio</span>
+        <span>·</span>
+        <span>Jan 2025</span>
+        <span>·</span>
+        <span>8 min read</span>
       </div>
+      <a href="#" class="read-link">Read Article
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
 
-      <!-- ARTICLES GRID -->
+  </div>
+</div>
+
+  <!-- ARTICLES GRID (featured removed from here) -->
+  <section>
+    <div class="section-inner" id = "articles">
       <div class="articles-grid">
         <div class="article-card reveal reveal-delay-1">
           <div class="article-thumb"><div class="article-thumb-icon">🏭</div><div class="article-tag">RPO</div></div>
@@ -971,7 +991,7 @@
     </div>
   </section>
 
-  <!-- NEWSLETTER (dark, like milestones) -->
+  <!-- NEWSLETTER (dark) -->
   <section class="newsletter-section reveal">
     <h2>Stay Ahead of the<br>Talent Market</h2>
     <p>Subscribe to our monthly Insights newsletter — exclusive research, salary data, and regional hiring trends delivered to your inbox.</p>
@@ -981,7 +1001,7 @@
     </div>
   </section>
 
-  <!-- CTA (gradient-main, like about.html) -->
+  <!-- CTA (gradient) -->
   <section class="cta-section reveal">
     <h2>Turn Insight into Action</h2>
     <p>Ready to apply these insights to your own hiring strategy? Our consultants are here to help you build the team your business needs.</p>
