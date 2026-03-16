@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Search & Headhunter Services | Satrio Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #313780;
+    --accent-dark: #232868;
+    --accent-deep: #1a1f5e;
+    --accent-red: #e14a48;
+    --accent-light: #ecedf8;
+    --accent-mid: rgba(49,55,128,0.15);
+    --black: #0d0f1a;
+    --gray-dark: #2a2d3e;
+    --gray-mid: #6b7080;
+    --gray-light: #f5f6fa;
+    --white: #ffffff;
+    --border: #e4e5ef;
+    --gradient-main: linear-gradient(135deg, #313780 0%, #232868 60%, #1a1f5e 100%);
+    --gradient-hero: linear-gradient(140deg, #f5f6fa 0%, #ecedf8 50%, #dfe0f3 100%);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', sans-serif; color: var(--black); background: var(--white); overflow-x: hidden; }
+
+  /* ══ HEADER ══ */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%; height: 76px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: box-shadow .35s, background .35s;
+  }
+  header.scrolled { box-shadow: 0 8px 40px rgba(49,55,128,.10); background: rgba(255,255,255,0.99); }
+
+  .logo-wrap { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+  .logo-img-box {
+    width: 42px; height: 42px; background: var(--gradient-main);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; overflow: hidden;
+  }
+  .logo-img-box img { width: 100%; height: 100%; object-fit: contain; }
+  .logo-img-box .logo-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600; color: #fff; letter-spacing: .02em;
+  }
+  .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 600; color: var(--black); letter-spacing: -.01em; line-height: 1; }
+  .logo-text span { color: var(--accent); }
+
+  nav { display: flex; gap: 2rem; align-items: center; }
+  nav a { font-size: .875rem; font-weight: 500; color: var(--gray-dark); text-decoration: none; letter-spacing: .01em; position: relative; transition: color .2s; white-space: nowrap; }
+  nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width .3s; border-radius: 2px; }
+  nav a:hover, nav a.active { color: var(--accent); }
+  nav a:hover::after, nav a.active::after { width: 100%; }
+
+  .dropdown { position: relative; }
+  .dropdown-toggle { display: flex; align-items: center; gap: .3rem; cursor: pointer; }
+  .dropdown-toggle svg { width: 14px; height: 14px; transition: transform .25s; }
+  .dropdown:hover .dropdown-toggle svg { transform: rotate(180deg); }
+  .dropdown-menu {
+    position: absolute; top: calc(100% + 14px); left: -16px;
+    background: white; border: 1px solid var(--border); border-radius: 12px; padding: 8px;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transform: translateY(-8px); transition: all .25s cubic-bezier(.4,0,.2,1);
+    min-width: 230px; box-shadow: 0 20px 60px rgba(49,55,128,.12), 0 4px 12px rgba(0,0,0,.06);
+  }
+  .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; pointer-events: all; transform: translateY(0); }
+  .dropdown-menu a { display: flex; align-items: center; gap: .6rem; padding: 9px 14px; font-size: .85rem; border-radius: 8px; color: var(--gray-dark); transition: background .2s, color .2s; }
+  .dropdown-menu a::after { display: none; }
+  .dropdown-menu a:hover { background: var(--accent-light); color: var(--accent); }
+  .dm-icon { width: 28px; height: 28px; border-radius: 7px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: .85rem; flex-shrink: 0; }
+
+  .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .65rem 1.5rem; border-radius: 8px; font-size: .875rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all .25s; letter-spacing: .02em; font-family: 'Outfit', sans-serif; border: none; }
+  .btn-primary { background: var(--gradient-main); color: #fff; box-shadow: 0 4px 20px rgba(49,55,128,.3); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(49,55,128,.4); }
+  .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+  .btn-outline:hover { background: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(49,55,128,.25); }
+  .btn-white { background: #fff; color: var(--accent); border: 2px solid rgba(255,255,255,.3); }
+  .btn-white:hover { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.5); }
+
+  /* Hamburger */
+  .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 6px; z-index: 1100; background: none; border: none; border-radius: 8px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--black); border-radius: 2px; transition: all .35s cubic-bezier(.4,0,.2,1); transform-origin: center; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile nav */
+  .mobile-nav { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(13,15,26,.97); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .35s; }
+  .mobile-nav.open { opacity: 1; pointer-events: all; }
+  .mobile-nav-links { display: flex; flex-direction: column; align-items: center; gap: .2rem; width: 100%; max-width: 360px; padding: 2rem; }
+  .mobile-nav a { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: rgba(255,255,255,.8); text-decoration: none; padding: .7rem 1.5rem; border-radius: 12px; width: 100%; text-align: center; transition: all .2s; }
+  .mobile-nav a:hover { color: #fff; background: rgba(255,255,255,.07); }
+  .mobile-nav-sub { display: flex; flex-direction: column; gap: .1rem; padding: .3rem 1.5rem; width: 100%; }
+  .mobile-nav-sub a { font-family: 'Outfit', sans-serif; font-size: .95rem; font-weight: 400; color: rgba(255,255,255,.45); padding: .45rem 1rem; }
+  .mobile-nav-sub a:hover { color: rgba(255,255,255,.8); background: rgba(255,255,255,.05); }
+  .mobile-nav-divider { width: 40px; height: 1px; background: rgba(255,255,255,.1); margin: .4rem auto; }
+  .mobile-nav-cta { margin-top: 1.8rem; }
+
+  /* ══ HERO ══ */
+  .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: var(--gradient-hero); padding-top: 76px; }
+  .hero-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(49,55,128,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(49,55,128,.05) 1px, transparent 1px); background-size: 64px 64px; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(80px); animation: blobFloat 10s ease-in-out infinite; }
+  .blob-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(49,55,128,.18) 0%, transparent 70%); top: -150px; right: -80px; }
+  .blob-2 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(225,74,72,.10) 0%, transparent 70%); bottom: 0; left: 5%; animation-delay: -4s; }
+  .blob-3 { width: 220px; height: 220px; background: radial-gradient(circle, rgba(49,55,128,.12) 0%, transparent 70%); top: 40%; right: 28%; animation-delay: -7s; }
+  @keyframes blobFloat { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-28px) scale(1.04)} }
+
+  .hero-ring { position: absolute; right: 8%; top: 50%; transform: translateY(-50%); width: 480px; height: 480px; border-radius: 50%; border: 1px solid rgba(49,55,128,.12); animation: spinRing 35s linear infinite; }
+  .hero-ring::before { content: ''; position: absolute; inset: 30px; border-radius: 50%; border: 1px dashed rgba(49,55,128,.08); animation: spinRing 20s linear infinite reverse; }
+  .hero-ring-dot { position: absolute; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; top: -4px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 0 4px rgba(49,55,128,.15); }
+  @keyframes spinRing { from{transform:translateY(-50%) rotate(0deg)} to{transform:translateY(-50%) rotate(360deg)} }
+
+  .hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 6rem 5%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .hero-tag { display: inline-flex; align-items: center; gap: .5rem; background: white; color: var(--accent); padding: .4rem 1rem; border-radius: 50px; font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1.8rem; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(49,55,128,.1); opacity: 0; animation: fadeUp .8s ease .2s forwards; }
+  .hero-tag-dot { width: 7px; height: 7px; background: var(--accent-red); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.4rem); font-weight: 300; line-height: 1.1; color: var(--black); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp .9s ease .4s forwards; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero h1 strong { font-weight: 600; }
+  .hero p { font-size: 1.05rem; color: var(--gray-mid); line-height: 1.8; max-width: 500px; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp .9s ease .6s forwards; }
+  .hero-btns { display: flex; gap: .8rem; flex-wrap: wrap; opacity: 0; animation: fadeUp .9s ease .8s forwards; }
+  .hero-visual { position: relative; z-index: 2; opacity: 0; animation: fadeRight 1s ease .5s forwards; display: flex; justify-content: center; align-items: center; }
+  .hero-card-stack { position: relative; width: 380px; height: 400px; }
+  .stat-card { position: absolute; background: #fff; border-radius: 18px; padding: 1.6rem 2rem; box-shadow: 0 20px 60px rgba(49,55,128,.10), 0 4px 16px rgba(0,0,0,.04); border: 1px solid var(--border); }
+  .stat-card:nth-child(1) { top: 0; right: 0; width: 190px; animation: float1 6s ease-in-out infinite; }
+  .stat-card:nth-child(2) { top: 90px; left: 0; width: 230px; animation: float2 7s ease-in-out infinite; }
+  .stat-card:nth-child(3) { bottom: 10px; right: 20px; width: 215px; animation: float3 5s ease-in-out infinite; }
+  @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+  @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+  @keyframes float3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+  .stat-icon { width: 40px; height: 40px; background: var(--accent-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: .8rem; }
+  .stat-icon svg { width: 20px; height: 20px; color: var(--accent); }
+  .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 600; color: var(--black); line-height: 1; }
+  .stat-label { font-size: .78rem; color: var(--gray-mid); margin-top: .3rem; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeRight { from{opacity:0;transform:translateX(32px)} to{opacity:1;transform:translateX(0)} }
+
+  /* ══ REVEAL ══ */
+  .reveal { opacity: 0; transform: translateY(36px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: .1s; }
+  .reveal-delay-2 { transition-delay: .2s; }
+  .reveal-delay-3 { transition-delay: .3s; }
+  .reveal-delay-4 { transition-delay: .4s; }
+
+  /* ══ SECTIONS ══ */
+  section { padding: 7rem 5%; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: .8rem; display: flex; align-items: center; gap: .6rem; }
+  .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--accent); border-radius: 2px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2; color: var(--black); margin-bottom: 1rem; }
+  .section-subtitle { font-size: 1rem; color: var(--gray-mid); line-height: 1.75; max-width: 580px; }
+
+  /* ══ CLIENTS ══ */
+  .clients { background: var(--black); padding: 4.5rem 0; overflow: hidden; }
+  .clients-label { text-align: center; font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 2.5rem; }
+  .clients-track-wrap { overflow: hidden; position: relative; }
+  .clients-track-wrap::before, .clients-track-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none; }
+  .clients-track-wrap::before { left: 0; background: linear-gradient(90deg, var(--black), transparent); }
+  .clients-track-wrap::after { right: 0; background: linear-gradient(-90deg, var(--black), transparent); }
+  .clients-track { display: flex; gap: 1.2rem; align-items: center; animation: marquee 26s linear infinite; width: max-content; }
+  .clients-track:hover { animation-play-state: paused; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .client-logo { display: flex; align-items: center; justify-content: center; height: 46px; padding: 0 1.8rem; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); border-radius: 10px; white-space: nowrap; font-weight: 500; font-size: .82rem; color: rgba(255,255,255,.45); letter-spacing: .04em; transition: all .3s; min-width: 120px; }
+  .client-logo:hover { background: rgba(49,55,128,.3); color: #a8acde; border-color: rgba(49,55,128,.5); }
+
+  /* ══ STRENGTHS ══ */
+  .strengths-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
+  .strength-card { padding: 2.5rem 2rem; border: 1px solid var(--border); border-radius: 20px; background: #fff; transition: all .35s cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden; }
+  .strength-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-main); transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.4,0,.2,1); }
+  .strength-card:hover { border-color: transparent; box-shadow: 0 24px 60px rgba(49,55,128,.12); transform: translateY(-6px); }
+  .strength-card:hover::before { transform: scaleX(1); }
+  .strength-icon { width: 54px; height: 54px; background: var(--accent-light); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; transition: all .3s; }
+  .strength-card:hover .strength-icon { background: var(--accent); }
+  .strength-card:hover .strength-icon svg { color: #fff; }
+  .strength-icon svg { width: 24px; height: 24px; color: var(--accent); transition: color .3s; }
+  .strength-card h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: .6rem; }
+  .strength-card p { font-size: .9rem; color: var(--gray-mid); line-height: 1.65; }
+
+  /* ══ SERVICES ══ */
+  .services-section { background: var(--gray-light); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
+  .service-card { background: #fff; border-radius: 20px; padding: 2.8rem 2.2rem; border: 1px solid var(--border); transition: all .35s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; position: relative; overflow: hidden; }
+  .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gradient-main); transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.4,0,.2,1); }
+  .service-card:hover { box-shadow: 0 28px 70px rgba(49,55,128,.12); transform: translateY(-6px); border-color: rgba(49,55,128,.2); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--accent-light); margin-bottom: 1.2rem; line-height: 1; }
+  .service-card h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: .7rem; }
+  .service-card p { font-size: .9rem; color: var(--gray-mid); line-height: 1.65; flex: 1; }
+  .service-link { display: inline-flex; align-items: center; gap: .45rem; font-size: .85rem; font-weight: 600; color: var(--accent); text-decoration: none; margin-top: 1.8rem; transition: gap .25s; }
+  .service-link:hover { gap: .85rem; }
+  .service-link svg { width: 16px; height: 16px; }
+
+  /* ══ TALENT REACH ══ */
+  .talent-reach { background: var(--black); position: relative; overflow: hidden; }
+  .talent-reach::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(49,55,128,.3) 0%, transparent 70%); pointer-events: none; }
+  .talent-reach .section-label { color: rgba(168,172,222,.9); }
+  .talent-reach .section-label::before { background: rgba(168,172,222,.6); }
+  .talent-reach .section-title { color: #fff; }
+  .talent-reach .section-subtitle { color: rgba(255,255,255,.55); }
+  .reach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3.5rem; }
+  .reach-card { border-radius: 24px; padding: 3rem 2.5rem; border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.04); backdrop-filter: blur(12px); transition: all .35s; position: relative; overflow: hidden; }
+  .reach-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(49,55,128,.15) 0%, transparent 60%); opacity: 0; transition: opacity .35s; }
+  .reach-card:hover { border-color: rgba(49,55,128,.5); }
+  .reach-card:hover::before { opacity: 1; }
+  .reach-platform { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.8rem; }
+  .reach-platform-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .reach-platform-icon.wa { background: linear-gradient(135deg, #25D366 0%, #128c7e 100%); }
+  .reach-platform-icon.dc { background: linear-gradient(135deg, #5865F2 0%, #404EED 100%); }
+  .reach-platform-icon svg { width: 26px; height: 26px; color: #fff; }
+  .reach-platform h4 { font-size: 1.05rem; font-weight: 600; color: #fff; }
+  .reach-platform span { font-size: .8rem; color: rgba(255,255,255,.45); }
+  .reach-stat { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 600; color: #fff; margin-bottom: .4rem; line-height: 1; }
+  .reach-stat-accent { color: var(--accent-red); }
+  .reach-card p { font-size: .9rem; color: rgba(255,255,255,.55); line-height: 1.75; margin-bottom: 2rem; }
+  .reach-tagline { text-align: center; margin-top: 3.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: rgba(255,255,255,.45); padding: 0 2rem; }
+
+  /* ══ OTHER BIZ ══ */
+  .other-biz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3.5rem; }
+  .biz-card { border-radius: 24px; overflow: hidden; position: relative; padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 300px; transition: transform .35s, box-shadow .35s; }
+  .biz-card:hover { transform: translateY(-7px); box-shadow: 0 32px 80px rgba(0,0,0,.2); }
+  .biz-card.okoshi { background: linear-gradient(135deg, #c8102e 0%, #7a000f 100%); }
+  .biz-card.hirai { background: var(--gradient-main); }
+  .biz-badge { display: inline-flex; align-items: center; gap: .4rem; background: rgba(255,255,255,.15); color: rgba(255,255,255,.9); padding: .3rem .9rem; border-radius: 50px; font-size: .75rem; font-weight: 600; letter-spacing: .06em; margin-bottom: 1.5rem; width: fit-content; border: 1px solid rgba(255,255,255,.2); }
+  .biz-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: #fff; margin-bottom: .8rem; }
+  .biz-card p { font-size: .9rem; color: rgba(255,255,255,.72); line-height: 1.7; flex: 1; }
+  .biz-link { display: inline-flex; align-items: center; gap: .5rem; color: rgba(255,255,255,.85); font-size: .85rem; font-weight: 600; text-decoration: none; margin-top: 2rem; transition: gap .2s, color .2s; }
+  .biz-link:hover { gap: .9rem; color: #fff; }
+  .biz-link svg { width: 16px; height: 16px; }
+
+  /* ══ INSIGHTS ══ */
+  .insights-preview { background: var(--gray-light); }
+  .insights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .insight-card { background: #fff; padding: 2.2rem; border-radius: 20px; border: 1px solid var(--border); transition: all .35s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; }
+  .insight-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(49,55,128,.1); border-color: rgba(49,55,128,.2); }
+  .insight-tag { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: .3rem .7rem; border-radius: 50px; display: inline-block; margin-bottom: 1rem; width: fit-content; }
+  .insight-card h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: .6rem; line-height: 1.4; }
+  .insight-card p { font-size: .9rem; color: var(--gray-mid); line-height: 1.65; margin-bottom: 1.5rem; flex: 1; }
+  .insight-card a { font-size: .85rem; font-weight: 600; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: .4rem; transition: gap .2s; }
+  .insight-card a:hover { gap: .7rem; }
+  .insight-cta { margin-top: 3rem; text-align: center; }
+
+  /* ══ CTA ══ */
+  .cta-section { background: var(--gradient-main); text-align: center; padding: 8rem 5%; position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+  .cta-inner { position: relative; z-index: 2; }
+  .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 300; color: #fff; margin-bottom: 1.2rem; line-height: 1.15; }
+  .cta-section p { font-size: 1.05rem; color: rgba(255,255,255,.75); max-width: 540px; margin: 0 auto 3rem; line-height: 1.75; }
+
+  /* ══ FOOTER ══ */
+  footer { background: var(--black); color: rgba(255,255,255,.55); padding: 6rem 5% 3rem; position: relative; overflow: hidden; }
+  footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(49,55,128,.6), transparent); }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto; }
+  .footer-brand .logo-wrap { margin-bottom: 1.2rem; }
+  .footer-brand .logo-text { color: #fff; }
+  .footer-brand p { font-size: .88rem; line-height: 1.75; max-width: 260px; margin-bottom: 1.8rem; }
+  .footer-socials { display: flex; flex-direction: column; gap: .6rem; max-width: 200px; }
+  .footer-social-btn { display: inline-flex; align-items: center; gap: .55rem; padding: .55rem 1.1rem; border-radius: 8px; font-size: .8rem; font-weight: 500; text-decoration: none; border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.65); background: rgba(255,255,255,.05); transition: all .25s; }
+  .footer-social-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+  .footer-social-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-1px); }
+  .footer-social-btn.footer-social-wa:hover { background: #25D366; border-color: #25D366; }
+  .footer-col h5 { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.85); margin-bottom: 1.2rem; }
+  .footer-col a { display: block; font-size: .875rem; color: rgba(255,255,255,.45); text-decoration: none; margin-bottom: .65rem; transition: color .2s; }
+  .footer-col a:hover { color: #a8acde; }
+  .footer-bottom { max-width: 1200px; margin: 3.5rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.06); display: flex; justify-content: space-between; align-items: center; font-size: .78rem; flex-wrap: wrap; gap: 1rem; }
+
+  /* ══ RESPONSIVE ══ */
+  @media(max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero p { max-width: 100%; margin-left: auto; margin-right: auto; }
+    .hero-btns { justify-content: center; }
+    .hero-visual { display: none; }
+    .hero-ring { display: none; }
+    nav { gap: 1.4rem; }
+  }
+  @media(max-width: 768px) {
+    nav, .btn-header-wrap { display: none; }
+    .hamburger { display: flex; }
+    .mobile-nav { display: flex; }
+    section { padding: 5rem 5%; }
+    .reach-grid { grid-template-columns: 1fr; }
+    .other-biz-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 2.8rem; }
+  }
+  @media(max-width: 560px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .strengths-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <a href="index.html" class="logo-wrap">
+    <div class="logo-img-box" id="logo-box">
+      <!-- To add your logo: replace the span below with: <img src="your-logo.png" alt="Satrio Consulting"> -->
+      <span class="logo-initials">SC</span>
+    </div>
+    <span class="logo-text">Satrio <span>Consulting</span></span>
+  </a>
+
+  <nav id="desktop-nav">
+    <a href="index.html" class="active">Home</a>
+    <div class="dropdown">
+      <a href="services.html" class="dropdown-toggle">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+      <div class="dropdown-menu">
+        <a href="services.html#search"><span class="dm-icon">🔍</span> Executive & Talent Search</a>
+        <a href="services.html#rpo"><span class="dm-icon">🔄</span> Recruitment Process Outsourcing</a>
+        <a href="services.html#eor"><span class="dm-icon">📋</span> Employer of Record</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#" class="dropdown-toggle">Ecosystem <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+      <div class="dropdown-menu">
+        <a href="#"><span class="dm-icon">⚡</span> Hirai.io</a>
+        <a href="#"><span class="dm-icon">🇯🇵</span> OKOSHI Japanese Edu</a>
+      </div>
+    </div>
+    <a href="about.html">About Us</a>
+    <a href="insights.html">Insights</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="btn-header-wrap" style="display:flex;align-items:center;gap:.8rem;">
+    <a href="contact.html" class="btn btn-primary" style="padding:.52rem 1.2rem;font-size:.82rem;">Get in Touch</a>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-links">
+    <a href="index.html" onclick="closeMobileNav()">Home</a>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-sub">
+      <a href="services.html" onclick="closeMobileNav()">Executive & Talent Search</a>
+      <a href="services.html#rpo" onclick="closeMobileNav()">RPO</a>
+      <a href="services.html#eor" onclick="closeMobileNav()">Employer of Record</a>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <a href="about.html" onclick="closeMobileNav()">About Us</a>
+    <a href="insights.html" onclick="closeMobileNav()">Insights</a>
+    <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+    <div class="mobile-nav-cta">
+      <a href="contact.html" class="btn btn-primary" onclick="closeMobileNav()">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="hero-ring"><div class="hero-ring-dot"></div></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag"><span class="hero-tag-dot"></span> Executive Search & Talent Solutions</div>
+      <h1>Delivering <em>Value</em>,<br><strong>Empowering</strong> Growth</h1>
+      <p>Satrio Consulting connects businesses with highly skilled multilingual professionals through strategic recruitment and executive search solutions.</p>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn btn-primary">Request Consultation</a>
+        <a href="services.html" class="btn btn-outline">Explore Services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path></svg></div>
+          <div class="stat-number">Curated</div>
+          <div class="stat-label">Talent Network</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+          <div class="stat-number">Efficient</div>
+          <div class="stat-label">Hiring Process</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+          <div class="stat-number">Trusted</div>
+          <div class="stat-label">Hiring Partner</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<div class="clients reveal">
+  <p class="clients-label">Trusted by Growing Companies Across Global Markets</p>
+  <div class="clients-track-wrap">
+    <div class="clients-track">
+      <div class="client-logo">Inphosoft</div>
+      <div class="client-logo">Accenture</div>
+      <div class="client-logo">Marquee Offices</div>
+      <div class="client-logo">LG Sinar Mas</div>
+      <div class="client-logo">Nostra Tech</div>
+      <div class="client-logo">Willtec</div>
+      <div class="client-logo">KapanJapan</div>
+      <div class="client-logo">IBT (Rakuten)</div>
+      <div class="client-logo">Liven</div>
+      <div class="client-logo">Evolene</div>
+      <div class="client-logo">Inphosoft</div>
+      <div class="client-logo">Accenture</div>
+      <div class="client-logo">Marquee Offices</div>
+      <div class="client-logo">LG Sinar Mas</div>
+      <div class="client-logo">Nostra Tech</div>
+      <div class="client-logo">Willtec</div>
+      <div class="client-logo">KapanJapan</div>
+      <div class="client-logo">IBT (Rakuten)</div>
+      <div class="client-logo">Liven</div>
+      <div class="client-logo">Evolene</div>
+    </div>
+  </div>
+</div>
+
+<!-- STRENGTHS -->
+<section>
+  <div class="section-inner">
+    <p class="section-label reveal">Why Choose Us</p>
+    <h2 class="section-title reveal reveal-delay-1">Built on Expertise.<br>Driven by Results.</h2>
+    <p class="section-subtitle reveal reveal-delay-2">We combine deep recruitment expertise with a strategic approach to connect organisations with highly skilled professionals who drive lasting growth.</p>
+    <div class="strengths-grid">
+      <div class="strength-card reveal reveal-delay-1">
+        <div class="strength-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path></svg></div>
+        <h4>Highly Skilled Talent</h4>
+        <p>We connect companies with carefully vetted professionals across technology, operational, and leadership roles.</p>
+      </div>
+      <div class="strength-card reveal reveal-delay-2">
+        <div class="strength-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div>
+        <h4>Multilingual Professionals</h4>
+        <p>Access to talent with Japanese, Korean, English, and Mandarin language capabilities for international business environments.</p>
+      </div>
+      <div class="strength-card reveal reveal-delay-3">
+        <div class="strength-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+        <h4>Customized Recruitment Strategy</h4>
+        <p>Every search is tailored to your organization's goals, ensuring the right talent fit for long-term success.</p>
+      </div>
+      <div class="strength-card reveal reveal-delay-4">
+        <div class="strength-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line></svg></div>
+        <h4>Comprehensive Talent Solutions</h4>
+        <p>From executive search to RPO and EOR, we support your hiring needs end-to-end across all industries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section">
+  <div class="section-inner">
+    <p class="section-label reveal">Our Services</p>
+    <h2 class="section-title reveal reveal-delay-1">Comprehensive Talent<br>Solutions, Tailored for You</h2>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">01</div>
+        <h4>Executive & Talent Search</h4>
+        <p>A contingency-based executive search service designed to identify and secure top professionals for managerial and leadership roles.</p>
+        <a href="services.html" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">02</div>
+        <h4>Recruitment Process Outsourcing (RPO)</h4>
+        <p>A flexible recruitment solution that allows companies to scale hiring efficiently while we manage sourcing, screening, and candidate coordination.</p>
+        <a href="services.html#rpo" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-num">03</div>
+        <h4>Employer of Record (EOR)</h4>
+        <p>Expand your team in Indonesia with full compliance. We manage recruitment, payroll, and employment administration so you can focus on growth.</p>
+        <a href="services.html#eor" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TALENT REACH -->
+<section class="talent-reach">
+  <div class="section-inner">
+    <p class="section-label reveal">Talent Reach Network</p>
+    <h2 class="section-title reveal reveal-delay-1">Reach Thousands of<br>Engaged Professionals</h2>
+    <p class="section-subtitle reveal reveal-delay-2">Our talent community channels give companies direct access to a highly engaged network of professionals actively exploring new opportunities.</p>
+    <div class="reach-grid">
+      <div class="reach-card reveal reveal-delay-2">
+        <div class="reach-platform">
+          <div class="reach-platform-icon wa">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div><h4>WhatsApp Channel</h4><span>Job Updates & Career Opportunities</span></div>
+        </div>
+        <div class="reach-stat">11,500<span class="reach-stat-accent">+</span></div>
+        <p>Active job seekers following our WhatsApp channel. Promote your job openings directly to a highly engaged community actively looking for new opportunities.</p>
+        <a href="https://whatsapp.com/channel/0029Vao9QrG4inosL8mP6R3k" class="btn btn-primary" style="font-size:.85rem;">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Join WhatsApp
+        </a>
+      </div>
+      <div class="reach-card reveal reveal-delay-3">
+        <div class="reach-platform">
+          <div class="reach-platform-icon dc">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.103.134 18.116a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+          </div>
+          <div><h4>Discord Community</h4><span>#KaburAjaDulu</span></div>
+        </div>
+        <div class="reach-stat">23,500<span class="reach-stat-accent">+</span></div>
+        <p>A growing community of professionals from diverse industries, including multilingual talent with international experience. Connect with candidates actively exploring new career opportunities.</p>
+        <a href="https://discord.com/invite/kaburajadulu" class="btn" style="background:#5865F2;color:#fff;border:none;box-shadow:0 4px 20px rgba(88,101,242,.3);font-size:.85rem;">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.103.134 18.116a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+          Join Discord
+        </a>
+      </div>
+    </div>
+    <div class="reach-tagline reveal">"Our community platforms bring together companies and professionals ready for their next move."</div>
+  </div>
+</section>
+
+<!-- OTHER BIZ -->
+<section>
+  <div class="section-inner">
+    <p class="section-label reveal">Our Ecosystem</p>
+    <h2 class="section-title reveal reveal-delay-1">Other Business Units</h2>
+    <p class="section-subtitle reveal reveal-delay-2">Satrio Consulting operates a broader ecosystem of ventures that extend talent solutions across education and technology.</p>
+    <div class="other-biz-grid">
+      <div class="biz-card okoshi reveal reveal-delay-2">
+        <div>
+          <div class="biz-badge">🇯🇵 Education Program</div>
+          <h3>OKOSHI Japanese Edu</h3>
+          <p>A structured program that prepares Indonesian professionals to achieve business-level Japanese proficiency and build meaningful careers in Japan — bridging cultures and unlocking new possibilities.</p>
+        </div>
+        <a href="services.html" class="biz-link">Discover OKOSHI <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div class="biz-card hirai reveal reveal-delay-3">
+        <div>
+          <div class="biz-badge">⚡ AI Platform</div>
+          <h3>Hirai.io</h3>
+          <p>An AI-powered recruitment platform designed to help companies discover exceptional talent faster. Intelligent matching, automated screening, and deep candidate insights — built for the future of hiring.</p>
+        </div>
+        <a href="services.html" class="biz-link">Explore Hirai.io <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="insights-preview">
+  <div class="section-inner">
+    <p class="section-label reveal">Insights</p>
+    <h2 class="section-title reveal reveal-delay-1">Perspectives on Talent,<br>Careers & Global Hiring</h2>
+    <p class="section-subtitle reveal reveal-delay-2">Explore our latest thinking on recruitment trends, career strategies, and global talent mobility.</p>
+    <div class="insights-grid">
+      <div class="insight-card reveal reveal-delay-1">
+        <span class="insight-tag">Career</span>
+        <h4>Why Pursue a Career in Software Engineering</h4>
+        <p>Exploring the opportunities and global demand for software engineers in the modern economy.</p>
+        <a href="https://satriocs.substack.com/p/why-pursue-a-career-in-software-engineering" target="_blank">Read Article →</a>
+      </div>
+      <div class="insight-card reveal reveal-delay-2">
+        <span class="insight-tag">Japan Careers</span>
+        <h4>Achieving JLPT N2 Is Not Enough</h4>
+        <p>The real language and cultural readiness required for professionals who want to build careers in Japan.</p>
+        <a href="https://satriocs.substack.com/" target="_blank">Read Article →</a>
+      </div>
+    </div>
+    <div class="insight-cta reveal">
+      <a href="https://satriocs.substack.com" target="_blank" class="btn btn-primary">View All Insights</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section reveal">
+  <div class="cta-inner">
+    <h2>Your Next Great Hire<br>Starts Here</h2>
+    <p>Partner with Satrio Consulting to find the right talent that drives your business forward. Share your hiring challenges and we'll craft a recruitment solution tailored to your goals.</p>
+    <a href="contact.html" class="btn btn-white">Contact Us</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo-wrap">
+        <div class="logo-img-box"><span class="logo-initials">SC</span></div>
+        <span class="logo-text">Satrio <span>Consulting</span></span>
+      </a>
+      <p>Delivering Value, Empowering Growth. Connecting businesses with highly skilled and multilingual professionals. Empowering organizations through strategic workforce solutions.</p>
+     
+    </div>
+    <div class="footer-col">
+      <h5>Navigation</h5>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Our Services</a>
+      <a href="insights.html">Insights</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="services.html#search">Executive & Talent Search</a>
+      <a href="services.html#rpo">RPO</a>
+      <a href="services.html#eor">Employer of Record</a>
+      <h5 style="margin-top:1.8rem;">Ecosystem</h5>
+      <a href="#">OKOSHI Japanese Edu</a>
+      <a href="#">Hirai.io</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+       <div class="footer-socials">
+        <a href="mailto:primawan.s@satriocs.com" class="footer-social-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Email Us
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=821072140115" target="_blank" class="footer-social-btn footer-social-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Satrio Consulting. All rights reserved.</span>
+    <span style="color:rgba(255,255,255,.25)">Executive Search · RPO · EOR · Talent Solutions</span>
+  </div>
+</footer>
+
+<script>
+  // Sticky header
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Hamburger / Mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  function closeMobileNav() {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  mobileNav.addEventListener('click', (e) => {
+    if (e.target === mobileNav) closeMobileNav();
+  });
+</script>
+</body>
+</html>
