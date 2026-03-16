@@ -386,18 +386,17 @@
       transform: scaleX(1);
     }
 
-
-  .breadcrumb { 
-    font-size: 1rem; 
-    color: var(--gray-mid); 
-    margin-bottom: 1.2rem; 
+    .breadcrumb { 
+      font-size: 1rem; 
+      color: var(--gray-mid); 
+      margin-bottom: 1.2rem; 
+      }
+    .breadcrumb a { 
+      color: var(--accent); 
+      text-decoration: none; 
     }
-  .breadcrumb a { 
-    color: var(--accent); 
-    text-decoration: none; 
-  }
 
-    /* page hero (matching about.html hero aesthetics) */
+    /* ===== PAGE HERO ===== */
     .page-hero {
       min-height: 100vh;
       display: flex;
@@ -408,28 +407,17 @@
       padding-top: var(--header-height);
       padding-bottom: 4rem;
     }
+
     .page-hero-inner {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 5%;
-      text-align: center;
-    }
-    .hero-tag {
-      display: inline-flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
       align-items: center;
-      gap: 0.5rem;
-      background: white;
-      color: var(--accent);
-      padding: 0.5rem 1.2rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 16px rgba(49,55,128,0.1);
     }
+
     .page-hero h1 {
       font-family: var(--font-heading);
       font-size: clamp(2.8rem, 5vw, 4.2rem);
@@ -439,48 +427,119 @@
       margin-bottom: 1.5rem;
     }
     .page-hero h1 em { font-style: italic; color: var(--accent); }
+
     .page-hero p {
       font-size: 1.1rem;
       color: var(--gray-mid);
       line-height: 1.8;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-bottom: 2rem;
     }
 
-    /* Tambahkan CSS untuk tombol hero */
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2.5rem;
-  flex-wrap: wrap;
-}
+    /* ===== COMMUNITY LABEL (shared) ===== */
+    .community-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .community-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
 
-.hero-btn {
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
-  background: white;
-  color: var(--accent);
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 16px rgba(49,55,128,0.1);
-}
+    /* ===== CHANNEL CARDS (shared) ===== */
+    .channel-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-.hero-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(49,55,128,0.15);
-  background: var(--accent);
-  color: white;
-}
+    .channel-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.3rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .channel-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient-main);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .channel-card:hover {
+      border-color: transparent;
+      box-shadow: 0 12px 40px rgba(49,55,128,0.12);
+      transform: translateY(-3px);
+    }
+    .channel-card:hover::before { transform: scaleX(1); }
 
-/* Untuk memastikan scrolling halus */
-html {
-  scroll-behavior: smooth;
-}
+    .channel-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .channel-info h5 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+    .channel-info p {
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+      margin: 0;
+    }
+
+    .channel-arrow {
+      margin-left: auto;
+      color: var(--border);
+      flex-shrink: 0;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .channel-card:hover .channel-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .page-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+      }
+      .community-label { justify-content: center; }
+    }
+
+    /* Untuk memastikan scrolling halus */
+    html {
+      scroll-behavior: smooth;
+    }
 
     /* service detail (preserving original layout but styled with new system) */
     .service-detail {
@@ -873,8 +932,8 @@ html {
       <div class="dropdown">
         <span class="nav-item">Initiatives <span style="font-size:0.7em; margin-left:2px;">▼</span></span>
         <div class="dropdown-menu">
-           <a href="services.html#okoshi"><span class="dm-icon">⚡</span> Hirai.io</a>
-          <a href="services.html#hirai"><span class="dm-icon">🇯🇵</span> OKOSHI Japanese Edu</a>
+           <a href="services.html#okoshi"><span class="dm-icon">🇯🇵</span> OKOSHI Japanese Edu</a>
+           <a href="services.html#hirai"><span class="dm-icon">⚡</span> Hirai.io</a>
         </div>
       </div>
       <a href="about.html" class="nav-item">About Us</a>
@@ -901,8 +960,8 @@ html {
     <div class="nav-item dropdown-trigger">
       Initiatives <span class="nav-arrow">▼</span>
       <div class="mobile-dropdown-content">
-        <a href="#">Hirai.io</a>
-        <a href="#">OKOSHI Japanese Edu</a>
+        <a href="services.html#okoshi">OKOSHI Japanese Edu</a>
+        <a href="services.html#hirai">Hirai.io</a>
       </div>
     </div>
     <a href="about.html" class="nav-item">About Us</a>
@@ -913,21 +972,67 @@ html {
     </div>
   </div>
 
-  <!-- PAGE HERO (styled like about.html) -->
+<!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> / Services</div>
-    <h1>Connecting Businesses<br>with <em>Exceptional Talent</em></h1>
-    <p>From executive search to scalable hiring solutions, Satrio Consulting supports companies in building high-performing teams with highly skilled and multilingual professionals across global markets.</p>
-    
-    <!-- Tambahkan tombol-tombol layanan -->
-    <div class="hero-buttons">
-      <a href="#search" class="hero-btn">Executive & Talent Search</a>
-      <a href="#rpo" class="hero-btn">Recruitment Process Outsourcing </a>
-      <a href="#eor" class="hero-btn">Employer of Record</a>
+
+    <!-- Kiri: teks -->
+    <div class="reveal">
+      <div class="breadcrumb"><a href="index.html">Home</a> / Services</div>
+      <h1>Connecting Businesses<br>with <em>Exceptional Talent</em></h1>
+      <p>From executive search to scalable hiring solutions, Satrio Consulting supports companies in building high-performing teams with highly skilled and multilingual professionals across global markets.</p>
     </div>
+
+    <!-- Kanan: tombol layanan -->
+    <div class="reveal reveal-delay-1">
+      <p class="community-label">Our Services</p>
+      <div class="channel-cards">
+
+        <a href="#search" class="channel-card">
+          <div class="channel-icon" style="background: var(--accent-light);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="22" height="22">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+          </div>
+          <div class="channel-info">
+            <h5>Executive & Talent Search</h5>
+            <p>Precision hiring for critical roles</p>
+          </div>
+          <svg class="channel-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+
+        <a href="#rpo" class="channel-card">
+          <div class="channel-icon" style="background: var(--accent-light);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="22" height="22">
+              <path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+            </svg>
+          </div>
+          <div class="channel-info">
+            <h5>Recruitment Process Outsourcing</h5>
+            <p>Scalable end-to-end hiring solutions</p>
+          </div>
+          <svg class="channel-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+
+        <a href="#eor" class="channel-card">
+          <div class="channel-icon" style="background: var(--accent-light);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="22" height="22">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div class="channel-info">
+            <h5>Employer of Record</h5>
+            <p>Compliant global employment made easy</p>
+          </div>
+          <svg class="channel-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+
+      </div>
+    </div>
+
   </div>
 </div>
+
   <!-- SERVICE 1: Executive & Talent Search -->
   <div class="service-detail" id="search">
     <div class="service-detail-inner">
@@ -1048,8 +1153,8 @@ html {
       <h2 class="section-title reveal reveal-delay-1">Beyond Recruitment —<br><em>Our Other Business Units</em></h2>
       <p class="section-subtitle reveal reveal-delay-2">Satrio Consulting operates a broader ecosystem of ventures extending our talent solutions into education and technology.</p>
       <div class="ecosystem-grid">
-        <div class="biz-card reveal reveal-delay-2">
-          <div class="badge red" id = "okoshi">🇯🇵 Education Program</div>
+        <div class="biz-card reveal reveal-delay-2" id = "okoshi">
+          <div class="badge red">🇯🇵 Education Program</div>
           <h3>OKOSHI Japanese Edu</h3>
           <p>A structured program that prepares Indonesian professionals to achieve <strong>business-level Japanese proficiency</strong> with mentors who have real work experience in Japan.</p>
           <ul class="feature-list">
@@ -1059,8 +1164,8 @@ html {
           </ul>
           <a href="contact.html" class="btn btn-primary" style="background:#c8102e;border-color:#c8102e;margin-top:.5rem;">Learn About OKOSHI</a>
         </div>
-        <div class="biz-card reveal reveal-delay-3">
-          <div class="badge" id = hirai>⚡ AI Platform</div>
+        <div class="biz-card reveal reveal-delay-3"id = "hirai">
+          <div class="badge">⚡ AI Platform</div>
           <h3>Hirai.io</h3>
           <p>An AI-powered recruitment platform helping companies discover exceptional talent faster, smarter, and with more confidence through intelligent matching and automated screening.</p>
           <ul class="feature-list">
