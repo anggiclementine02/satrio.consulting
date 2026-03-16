@@ -320,8 +320,6 @@
     .section-inner {
       max-width: 1200px;
       margin: 0 auto;
-      margin-bottom: -50px;
-      margin-top: -50px;
     }
     .section-label {
       font-size: 0.72rem;
@@ -388,17 +386,18 @@
       transform: scaleX(1);
     }
     
-  .breadcrumb { 
-    font-size: 1rem; 
-    color: var(--gray-mid); 
-    margin-bottom: 1.2rem; 
+    .breadcrumb { 
+      font-size: 1rem; 
+      color: var(--gray-mid); 
+      margin-bottom: 1.2rem; 
     }
-  .breadcrumb a { 
-    color: var(--accent); 
-    text-decoration: none; 
-  }
+    .breadcrumb a { 
+      color: var(--accent); 
+      text-decoration: none; 
+    }
 
-    /* page hero (exact dimensions from about.html) */
+
+    /* ===== PAGE HERO ===== */
     .page-hero {
       min-height: 100vh;
       display: flex;
@@ -409,12 +408,18 @@
       padding-top: var(--header-height);
       padding-bottom: 4rem;
     }
+
     .page-hero-inner {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 5%;
-      text-align: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
     }
+
+    /* Hero text styling */
     .hero-tag {
       display: inline-flex;
       align-items: center;
@@ -429,8 +434,9 @@
       text-transform: uppercase;
       margin-bottom: 1.5rem;
       border: 1px solid var(--border);
-      box-shadow: 0 4px 16px rgba(49,55,128,0.1);
+      box-shadow: var(--shadow-sm);
     }
+
     .page-hero h1 {
       font-family: var(--font-heading);
       font-size: clamp(2.8rem, 5vw, 4.2rem);
@@ -439,107 +445,177 @@
       color: var(--black);
       margin-bottom: 1.5rem;
     }
-    .page-hero h1 em { font-style: italic; color: var(--accent); }
+
+    .page-hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
     .page-hero p {
       font-size: 1.1rem;
       color: var(--gray-mid);
       line-height: 1.8;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-bottom: 2rem;
     }
 
-    /* contact grid */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 5rem;
-      align-items: start;
-      margin-top: 3.5rem;
-    }
-
-    /* redesigned direct contact cards (Email & WhatsApp) */
-    .contact-direct-grid {
+    /* ===== BLUE ACTION BUTTONS GRID ===== */
+    .contact-buttons-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin: 2rem 0 2.5rem;
-    }
-    .contact-direct-card {
-      display: flex;
-      align-items: center;
       gap: 1rem;
-      padding: 1.5rem;
-      text-decoration: none;
-      color: inherit;
-      background: #fff;
-    }
-    .contact-direct-card .contact-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: var(--accent-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      flex-shrink: 0;
-      transition: background 0.2s;
-    }
-    .contact-direct-card:hover .contact-icon {
-      background: var(--accent);
-      color: #fff;
-    }
-    .contact-direct-info h5 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-      color: var(--black);
-    }
-    .contact-direct-info p {
-      font-size: 0.9rem;
-      color: var(--gray-mid);
+      margin-top: 2rem;
+
     }
 
-    /* channel cards (unchanged, using same style) */
-    .channel-cards { display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem; }
+    /* Email — solid gradient navy */
+    .contact-buttons-grid .btn-email {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--gradient-main);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(49,55,128,0.35);
+      transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+      cursor: pointer;
+    }
+    .contact-buttons-grid .btn-email:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(49,55,128,0.45);
+    }
+
+    /* WhatsApp — ghost/outline navy */
+    .contact-buttons-grid .btn-wa {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+      cursor: pointer;
+    }
+    .contact-buttons-grid .btn-wa:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(49,55,128,0.3);
+    }
+    /* ===== COMMUNITY SECTION ===== */
+    .community-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 1rem;
+    }
+
+    .channel-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
     .channel-card {
       display: flex;
       align-items: center;
       gap: 1rem;
-      padding: 1.2rem 1.5rem;
+      padding: 1rem 1.2rem;
       border: 1px solid var(--border);
       border-radius: 16px;
       text-decoration: none;
       transition: all 0.3s;
       background: #fff;
     }
+
     .channel-card:hover {
       border-color: var(--accent);
       background: var(--accent-light);
       transform: translateX(5px);
     }
+
+    /* Ikon channel seragam biru dengan ikon putih */
     .channel-icon {
       width: 44px;
       height: 44px;
       border-radius: 12px;
+      background: var(--accent);  /* biru solid */
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
-    .channel-icon.wa { background: #25D366; }
-    .channel-icon.dc { background: #5865F2; }
-    .channel-icon.li { background: #0077B5; }
-    .channel-icon svg { width: 22px; height: 22px; color: #fff; }
+
+    .channel-icon svg {
+      width: 22px;
+      height: 22px;
+      color: #fff;  /* putih */
+      fill: currentColor;
+    }
+
     .channel-info h5 {
       font-size: 0.95rem;
       font-weight: 600;
       color: var(--black);
+      margin-bottom: 0.2rem;
     }
+
     .channel-info p {
       font-size: 0.8rem;
       color: var(--gray-mid);
+      margin: 0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .page-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+      }
+
+      .contact-buttons-grid {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .channel-card {
+        text-align: left;
+      }
+
+      .breadcrumb {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-buttons-grid {
+        grid-template-columns: 1fr;  /* stack on very small */
+      }
+    }
+
+    /* contact main section (two columns) */
+    .contact-main-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 4rem;
+      align-items: start;
     }
 
     /* form styling */
@@ -611,12 +687,11 @@
       margin-top: 1rem;
     }
 
-    /* service quick grid (cards) */
-    .service-quick-grid {
+    /* response promise grid (2 kolom di dalam kanan) */
+    .response-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
-      margin-top: 3rem;
+      margin-top: 2rem;
     }
     .sq-card { padding: 1.8rem; }
     .sq-card h4 {
@@ -725,11 +800,13 @@
       color: rgba(255,255,255,0.4);
     }
 
-    /* responsive (from about.html) */
+    /* responsive */
     @media (max-width: 1024px) {
       .desktop-nav { display: none; }
       .hamburger { display: flex; }
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .page-hero-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+      .contact-buttons-grid { max-width: 400px; margin-left: auto; margin-right: auto; }
+      .contact-main-grid { grid-template-columns: 1fr; gap: 3rem; }
       .page-hero h1 { font-size: 3rem; }
     }
     @media (max-width: 768px) {
@@ -737,7 +814,7 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .contact-form-wrap { padding: 2rem; }
-      .contact-direct-grid { grid-template-columns: 1fr; }
+      .response-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       .footer-grid { grid-template-columns: 1fr; }
@@ -764,8 +841,8 @@
       <div class="dropdown">
         <span class="nav-item">Initiatives <span style="font-size:0.7em; margin-left:2px;">▼</span></span>
         <div class="dropdown-menu">
-          <a href="services.html#okoshi"><span class="dm-icon">⚡</span> Hirai.io</a>
-          <a href="services.html#hirai"><span class="dm-icon">🇯🇵</span> OKOSHI Japanese Edu</a>
+           <a href="services.html#okoshi"><span class="dm-icon">🇯🇵</span> OKOSHI Japanese Edu</a>
+           <a href="services.html#hirai"><span class="dm-icon">⚡</span> Hirai.io</a>
         </div>
       </div>
       <a href="about.html" class="nav-item">About Us</a>
@@ -792,8 +869,8 @@
     <div class="nav-item dropdown-trigger">
       Initiatives <span class="nav-arrow">▼</span>
       <div class="mobile-dropdown-content">
-        <a href="#">Hirai.io</a>
-        <a href="#">OKOSHI Japanese Edu</a>
+        <a href="services.html#okoshi">OKOSHI Japanese Edu</a>
+        <a href="services.html#hirai">Hirai.io</a>
       </div>
     </div>
     <a href="about.html" class="nav-item">About Us</a>
@@ -804,142 +881,144 @@
     </div>
   </div>
 
-  <!-- PAGE HERO (now matches about.html height & spacing) -->
-  <div class="page-hero">
-    <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> / Contact</div>
-    
+<!-- HERO SECTION (estetik dengan ikon biru/putih) -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <!-- Left column: breadcrumb, title, paragraph, and two blue buttons with icons -->
+    <div class="reveal">
+      <div class="breadcrumb"><a href="index.html">Home</a> / Contact</div>
       <h1>Let's Start a<br><em>Conversation</em></h1>
       <p>Whether you're looking to fill a critical role, transform your hiring process, or explore a strategic talent partnership — our team is ready to help you take the first step.</p>
+ <div class="contact-buttons-grid">
+  <a href="mailto:primawan.s@satriocs.com" class="btn-email">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+    </svg>
+    Email
+  </a>
+  <a href="https://api.whatsapp.com/send/?phone=821072140115" target="_blank" class="btn-wa">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp
+        </a>
+      </div>
     </div>
-  </div>
 
-  <!-- CONTACT SECTION (structure unchanged, contact info redesigned) -->
-  <section>
-    <div class="section-inner">
-      <div class="contact-grid">
-        <!-- LEFT: INFO (redesigned contact cards) -->
-        <div class="reveal">
-          <p class="section-label">Get in Touch</p>
-          <h2 class="section-title" style="font-size:2rem;">We'd Love to Hear from You</h2>
-
-          <!-- redesigned Email & WhatsApp cards (preserving exact link text) -->
-          <div class="contact-direct-grid">
-            <a href="mailto:primawan.s@satriocs.com" class="contact-direct-card">
-              <span class="contact-icon">✉️</span>
-              <div class="contact-direct-info">
-                <h5>Email</h5>
-                <p>Contact on Email</p>
-              </div>
-            </a>
-            <a href="https://api.whatsapp.com/send/?phone=821072140115" target="_blank" class="contact-direct-card">
-              <span class="contact-icon">💬</span>
-              <div class="contact-direct-info">
-                <h5>WhatsApp</h5>
-                <p>Chat on WhatsApp</p>
-              </div>
-            </a>
-          </div>
-
-          <p class="section-label" style="margin-top:2rem;">Join Our Community</p>
-          <div class="channel-cards">
-            <a href="https://whatsapp.com/channel/0029Vao9QrG4inosL8mP6R3k" target="_blank" class="channel-card">
-              <div class="channel-icon wa">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              </div>
-              <div class="channel-info"><h5>WhatsApp Channel</h5><p>11,500+ active job seekers</p></div>
-            </a>
-            <a href="https://discord.com/invite/kaburajadulu" target="_blank" class="channel-card">
-              <div class="channel-icon dc">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.103.134 18.116a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-              </div>
-              <div class="channel-info"><h5>Discord #KaburAjaDulu</h5><p>23,500+ professionals</p></div>
-            </a>
-            <a href="https://www.linkedin.com/company/satrio-consulting/" target="_blank" class="channel-card">
-              <div class="channel-icon li">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              </div>
-              <div class="channel-info"><h5>LinkedIn</h5><p>Follow us for updates</p></div>
-            </a>
-          </div>
-        </div>
-
-        <!-- RIGHT: FORM (unchanged) -->
-        <div class="contact-form-wrap reveal reveal-delay-2">
-          <h3>Send Us a Message</h3>
-          <p style="font-size:.88rem;color:var(--gray-mid);margin-bottom:2rem;">Fill in the form and a consultant will be in touch within 24 hours.</p>
-          <form id="contactForm" action="https://formspree.io/f/mjgagyon" method="POST">
-            <div class="form-row">
-              <div class="form-group">
-                <label>First Name *</label>
-                <input type="text" name="first_name" placeholder="Enter your First Name" required>
-              </div>
-              <div class="form-group">
-                <label>Last Name *</label>
-                <input type="text" name="last_name" placeholder="Enter your Last Name" required>
-              </div>
+    <!-- Right column: community channels with consistent blue icons -->
+    <div class="reveal reveal-delay-1">
+      <div class="community-section">
+        <p class="community-label">Join Our Community</p>
+        <div class="channel-cards">
+          <!-- WhatsApp Channel -->
+          <a href="https://whatsapp.com/channel/0029Vao9QrG4inosLm8P6R3k" target="_blank" class="channel-card">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Work Email *</label>
-                <input type="email" name="email" placeholder="you@company.com" required>
-              </div>
-              <div class="form-group">
-                <label>Phone Number</label>
-                <input type="tel" name="phone" placeholder="+62 8xx xxxx xxxx">
-              </div>
+            <div class="channel-info"><h5>WhatsApp Channel</h5><p>11,500+ active job seekers</p></div>
+          </a>
+          <!-- Discord -->
+          <a href="https://discord.com/invite/kaburajadulu" target="_blank" class="channel-card">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.103.134 18.116a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+              </svg>
             </div>
-            <div class="form-group">
-              <label>Company Name *</label>
-              <input type="text" name="company" placeholder="Your company name" required>
+            <div class="channel-info"><h5>Discord #KaburAjaDulu</h5><p>23,500+ professionals</p></div>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/company/satrio-consulting/" target="_blank" class="channel-card">
+            <div class="channel-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
             </div>
-            <div class="form-group">
-              <label>I'm interested in</label>
-              <select name="service">
-                <option value="">Select a service...</option>
-                <option>Executive & Talent Search</option>
-                <option>Recruitment Process Outsourcing (RPO)</option>
-                <option>Employer of Record (EOR)</option>
-                <option>OKOSHI Japanese Education Program</option>
-                <option>Hirai.io AI Recruitment Platform</option>
-                <option>General Inquiry</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Tell us about your hiring challenge</label>
-              <textarea name="message" placeholder="Describe the roles you're hiring for, your timeline, or any challenges you're facing..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary form-submit">Send Message →</button>
-          </form>
-          <div class="success-message" id="success">
-            ✅ Thank you! We've received your message and will be in touch within 24 hours.
-          </div>
+            <div class="channel-info"><h5>LinkedIn</h5><p>Follow us for updates</p></div>
+          </a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- WHY CONTACT / WHAT HAPPENS NEXT (cards now match strength-card style) -->
-  <section style="background:var(--gray-light);">
-    <div class="section-inner">
-      <p class="section-label reveal">What Happens Next</p>
-      <h2 class="section-title reveal reveal-delay-1">Our Response Promise</h2>
-      <div class="service-quick-grid">
-        <div class="sq-card reveal reveal-delay-1">
-          <h4>⚡ Deep Understanding</h4>
-          <p>A consultant will reach out to understand your hiring needs and discuss the right service for you.</p>
+  <!-- CONTACT MAIN SECTION: left = form, right = "What Happens Next" (4 points) -->
+  <section>
+    <div class="section-inner contact-main-grid">
+      <!-- LEFT: FORM -->
+      <div class="contact-form-wrap reveal">
+        <h3>Send Us a Message</h3>
+        <p style="font-size:.88rem;color:var(--gray-mid);margin-bottom:2rem;">Fill in the form and a consultant will be in touch within 24 hours.</p>
+        <form id="contactForm" action="https://formspree.io/f/mjgagyon" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" name="first_name" placeholder="Enter your First Name" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" name="last_name" placeholder="Enter your Last Name" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Work Email *</label>
+              <input type="email" name="email" placeholder="you@company.com" required>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" name="phone" placeholder="+62 8xx xxxx xxxx">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Company Name *</label>
+            <input type="text" name="company" placeholder="Your company name" required>
+          </div>
+          <div class="form-group">
+            <label>I'm interested in</label>
+            <select name="service">
+              <option value="">Select a service...</option>
+              <option>Executive & Talent Search</option>
+              <option>Recruitment Process Outsourcing (RPO)</option>
+              <option>Employer of Record (EOR)</option>
+              <option>OKOSHI Japanese Education Program</option>
+              <option>Hirai.io AI Recruitment Platform</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell us about your hiring challenge</label>
+            <textarea name="message" placeholder="Describe the roles you're hiring for, your timeline, or any challenges you're facing..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Send Message →</button>
+        </form>
+        <div class="success-message" id="success">
+          ✅ Thank you! We've received your message and will be in touch within 24 hours.
         </div>
-        <div class="sq-card reveal reveal-delay-2">
-          <h4>📋 Blind Resume Trial</h4>
-          <p>Feel free to request any position for a blind resume trial — we'll show you what's possible before you commit.</p>
-        </div>
-        <div class="sq-card reveal reveal-delay-3">
-          <h4>🤝 Agreement & Kickoff</h4>
-          <p>Once aligned, we sign a non-exclusive agreement. No long-term lock-in — you stay in control.</p>
-        </div>
-        <div class="sq-card reveal reveal-delay-1">
-          <h4>🚀 Search Begins</h4>
-          <p>For Talent Search, candidates are presented after thorough sourcing and screening. RPO delivers within the month.</p>
+      </div>
+
+      <!-- RIGHT: WHAT HAPPENS NEXT (4 points) -->
+      <div class="reveal reveal-delay-1">
+        <p class="section-label">What Happens Next</p>
+        <h2 class="section-title" style="font-size:2rem; margin-bottom:1.5rem;">Our Response Promise</h2>
+        <div class="response-grid">
+          <div class="sq-card">
+            <h4>⚡ Deep Understanding</h4>
+            <p>A consultant will reach out to understand your hiring needs and discuss the right service for you.</p>
+          </div>
+          <div class="sq-card">
+            <h4>📋 Blind Resume Trial</h4>
+            <p>Feel free to request any position for a blind resume trial — we'll show you what's possible before you commit.</p>
+          </div>
+          <div class="sq-card">
+            <h4>🤝 Agreement & Kickoff</h4>
+            <p>Once aligned, we sign a non-exclusive agreement. No long-term lock-in — you stay in control.</p>
+          </div>
+          <div class="sq-card">
+            <h4>🚀 Search Begins</h4>
+            <p>For Talent Search, candidates are presented after thorough sourcing and screening. RPO delivers within the month.</p>
+          </div>
         </div>
       </div>
     </div>
